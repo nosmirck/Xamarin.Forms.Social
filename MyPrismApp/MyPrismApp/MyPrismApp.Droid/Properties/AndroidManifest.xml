@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.cineplex.TestXamarinApp" android:versionCode="1" android:versionName="1">
+	<uses-sdk android:minSdkVersion="23" />
+	<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="1982655385305897" />
+	<activity android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:label="MyPrismApp" />
+	<application android:label="MyPrismApp.Droid" android:theme="@style/MyTheme"></application>
+</manifest>
