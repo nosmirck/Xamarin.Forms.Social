@@ -6,6 +6,10 @@ using Foundation;
 using UIKit;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using Facebook.CoreKit;
+using Xamarin.Forms;
+using MyPrismApp.Services.Contracts;
+using MyPrismApp.iOS.Services;
 
 namespace MyPrismApp.iOS
 {
@@ -25,9 +29,23 @@ namespace MyPrismApp.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
+			
 			LoadApplication(new App(new iOSInitializer()));
 
+			ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
+
 			return base.FinishedLaunching(app, options);
+		}
+
+		public override void OnActivated(UIApplication uiApplication)
+		{
+			base.OnActivated(uiApplication);
+			AppEvents.ActivateApp();
+		}
+
+		public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+		{
+			return ApplicationDelegate.SharedInstance.OpenUrl(application, url, sourceApplication, annotation);
 		}
 	}
 
@@ -35,7 +53,7 @@ namespace MyPrismApp.iOS
 	{
 		public void RegisterTypes(IUnityContainer container)
 		{
-
+			container.RegisterType<IFacebookManager, FacebookManager>();
 		}
 	}
 

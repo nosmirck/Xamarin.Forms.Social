@@ -18,7 +18,7 @@ using Xamarin.Facebook.Login;
 
 namespace MyPrismApp.Droid.Services
 {
-	class FacebookManager : Java.Lang.Object, IFacebookManager, IFacebookCallback, GraphRequest.IGraphJSONObjectCallback
+	public class FacebookManager : Java.Lang.Object, IFacebookManager, IFacebookCallback, GraphRequest.IGraphJSONObjectCallback
 	{
 		public ICallbackManager CallbackManager;
 
@@ -47,18 +47,12 @@ namespace MyPrismApp.Droid.Services
 		#region IFacebookCallback
 		public void OnCancel()
 		{
-			if (_onLoginComplete != null)
-			{
-				_onLoginComplete.Invoke(null, new System.Exception("Login Canceled"));
-			}
+			_onLoginComplete?.Invoke(null, new System.Exception("Login Canceled."));
 		}
 
 		public void OnError(FacebookException error)
 		{
-			if (_onLoginComplete != null)
-			{
-				_onLoginComplete.Invoke(null, new System.Exception(error.Message));
-			}
+			_onLoginComplete?.Invoke(null, new System.Exception(error.LocalizedMessage));
 		}
 
 		public void OnSuccess(Java.Lang.Object result)
@@ -73,10 +67,10 @@ namespace MyPrismApp.Droid.Services
 				request.ExecuteAsync();
 			}
 		}
-			#endregion
+		#endregion
 
-			#region IGraphJSONObjectCallback
-			public void OnCompleted(JSONObject p0, GraphResponse p1)
+		#region IGraphJSONObjectCallback
+		public void OnCompleted(JSONObject p0, GraphResponse p1)
 		{
 			var id = string.Empty;
 			var first_name = string.Empty;
@@ -109,10 +103,7 @@ namespace MyPrismApp.Droid.Services
 				}
 			}
 
-			if (_onLoginComplete != null)
-			{
-				_onLoginComplete.Invoke(new FacebookUser(id, AccessToken.CurrentAccessToken.Token, first_name, first_name, email, pictureUrl), null);
-			}
+			_onLoginComplete?.Invoke(new FacebookUser(id, AccessToken.CurrentAccessToken.Token, first_name, first_name, email, pictureUrl), null);
 		}
 		#endregion
 	}
