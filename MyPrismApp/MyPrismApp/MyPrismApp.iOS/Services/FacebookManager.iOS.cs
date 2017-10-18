@@ -17,11 +17,10 @@ namespace MyPrismApp.iOS.Services
 	{
 		Action<FacebookUser, Exception> _onLoginComplete;
 
-		LoginManager LoginManager;
+		LoginManager LoginManager = null;
 
 		public FacebookManager()
 		{
-			LoginManager = new LoginManager();
 		}
 
 		void OnRequestHandler(GraphRequestConnection connection, NSObject result, NSError error)
@@ -113,9 +112,10 @@ namespace MyPrismApp.iOS.Services
 			{
 				vc = vc.PresentedViewController;
 			}
-
+			if (LoginManager == null)
+				LoginManager = new LoginManager();
 			LoginManager.LogOut();
-			LoginManager.LoginBehavior = LoginBehavior.Native;
+			LoginManager.LoginBehavior = LoginBehavior.SystemAccount;
 			LoginManager.LogInWithReadPermissions(new string[] { "public_profile", "email" }, vc, OnLoginHandler);
 		}
 
