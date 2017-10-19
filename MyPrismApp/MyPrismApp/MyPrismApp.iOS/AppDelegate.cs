@@ -32,8 +32,6 @@ namespace MyPrismApp.iOS
 			
 			LoadApplication(new App(new iOSInitializer()));
 
-			ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
-
 			return base.FinishedLaunching(app, options);
 		}
 

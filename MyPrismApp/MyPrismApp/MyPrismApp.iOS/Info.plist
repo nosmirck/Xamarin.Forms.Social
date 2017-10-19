@@ -64,7 +64,7 @@
 		<key>FacebookAppID</key>
 		<string>1982655385305897</string>
 		<key>FacebookDisplayName</key>
-		<string>XamarinGDLGroup</string>
+		<string>MyPrismApp</string>
 		<key>LSApplicationQueriesSchemes</key>
 		<array>
 			<string>fbapi</string>
