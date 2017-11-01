@@ -7,7 +7,7 @@ using Xamarin.Forms.Social.Data;
 
 namespace Xamarin.Forms.Social.Services
 {
-	interface IFacebookService
+	public interface IFacebookService
 	{
 		void Login(Action<FacebookUser, Exception> OnLoginCompleted);
 		void Logout();

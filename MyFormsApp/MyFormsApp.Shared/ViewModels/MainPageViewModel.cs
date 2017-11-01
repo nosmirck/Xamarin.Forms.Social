@@ -62,8 +62,8 @@ namespace MyFormsApp.ViewModels
 			}
 		}
 
-		public Command LoginCommand { get; protected set; }
-		public Command LogoutCommand { get; protected set; }
+		public Command FacebookLoginCommand { get; protected set; }
+		public Command FacebookLogoutCommand { get; protected set; }
 
 		public MainPageViewModel()
 		{
@@ -71,15 +71,15 @@ namespace MyFormsApp.ViewModels
 
 			Message = "Xamarin Forms Facebook Login";
 
-			LoginCommand = new Command(Login);
-			LogoutCommand = new Command(Logout);
+			FacebookLoginCommand = new Command(FacebookLogin);
+			FacebookLogoutCommand = new Command(FacebookLogout);
 		}
 
-		private void Login()
+		private void FacebookLogin()
 		{
 			_facebookService?.Login(OnLoginCompleted);
 		}
-		private void Logout()
+		private void FacebookLogout()
 		{
 			_facebookService?.Logout();
 			IsLoggedIn = false;

@@ -2,21 +2,39 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MyFormsApp"
+             xmlns:converters="clr-namespace:MyFormsApp.Views.Converters"
              xmlns:viewmodels="clr-namespace:MyFormsApp.ViewModels"
              x:Class="MyFormsApp.Views.MainPage">
 	<ContentPage.BindingContext>
 		<viewmodels:MainPageViewModel/>
 	</ContentPage.BindingContext>
 
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
 	<ContentPage.Content>
-		<StackLayout>
+		<StackLayout HorizontalOptions="Center"
+					 VerticalOptions="Center">
 			<Label Text="{Binding Message}" 
 				   VerticalOptions="CenterAndExpand" 
 				   HorizontalOptions="CenterAndExpand" />
-			<Button Text="Facebook Login" 
-					Command="{Binding LoginCommand}"
-					VerticalOptions="CenterAndExpand" 
-					HorizontalOptions="CenterAndExpand" />
+
+			<Button Text="Facebook Login"
+					Command="{Binding FacebookLoginCommand}"
+					IsVisible="{Binding IsLoggedIn, Converter={StaticResource InvertBooleanConverter}}"/>
+
+			<Button Text="Logout"
+					Command="{Binding FacebookLogoutCommand}"
+					IsVisible="{Binding IsLoggedIn}"/>
+
+			<Image Source="{Binding FacebookUser.Picture}"
+				   IsVisible="{Binding IsLoggedIn}"/>
+
+			<Label Text="{Binding FacebookUser.FirstName}"
+				   IsVisible="{Binding IsLoggedIn}"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
