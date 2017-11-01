@@ -77,11 +77,11 @@ namespace MyFormsApp.ViewModels
 
 		private void Login()
 		{
-			_facebookService.Login(OnLoginCompleted);
+			_facebookService?.Login(OnLoginCompleted);
 		}
 		private void Logout()
 		{
-			_facebookService.Logout();
+			_facebookService?.Logout();
 			IsLoggedIn = false;
 		}
 

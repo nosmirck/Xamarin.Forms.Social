@@ -135,9 +135,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyFormsApp\MyFormsApp.csproj">
-      <Project>{46bc8470-5999-4aa8-bebc-33ee75317394}</Project>
-      <Name>MyFormsApp</Name>
+    <ProjectReference Include="..\MyFormsApp.Core\MyFormsApp.Shared.csproj">
+      <Project>{030c38e7-cf62-4594-a7cf-fd7c804af5e6}</Project>
+      <Name>MyFormsApp.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
