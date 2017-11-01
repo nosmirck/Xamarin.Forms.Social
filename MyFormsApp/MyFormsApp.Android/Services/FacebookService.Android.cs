@@ -102,7 +102,7 @@ namespace MyFormsApp.Droid.Services
 				}
 			}
 
-			_onLoginComplete?.Invoke(new FacebookUser(id, AccessToken.CurrentAccessToken.Token, first_name, first_name, email, pictureUrl), null);
+			_onLoginComplete?.Invoke(new FacebookUser(id, AccessToken.CurrentAccessToken.Token, first_name, last_name, email, pictureUrl), null);
 		}
 		#endregion
 	}

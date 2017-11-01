@@ -17,7 +17,8 @@
 
 	<ContentPage.Content>
 		<StackLayout HorizontalOptions="Center"
-					 VerticalOptions="Center">
+					 VerticalOptions="Center"
+					 Margin="20">
 			<Label Text="{Binding Message}" 
 				   VerticalOptions="CenterAndExpand" 
 				   HorizontalOptions="CenterAndExpand" />
@@ -33,7 +34,19 @@
 			<Image Source="{Binding FacebookUser.Picture}"
 				   IsVisible="{Binding IsLoggedIn}"/>
 
-			<Label Text="{Binding FacebookUser.FirstName}"
+			<Label Text="{Binding FacebookUser.Id, StringFormat='Id: {0}'}"
+				   IsVisible="{Binding IsLoggedIn}"/>
+
+			<Label Text="{Binding FacebookUser.Token, StringFormat='Token: {0}'}"
+				   IsVisible="{Binding IsLoggedIn}"/>
+
+			<Label Text="{Binding FacebookUser.FirstName, StringFormat='FirstName: {0}'}"
+				   IsVisible="{Binding IsLoggedIn}"/>
+
+			<Label Text="{Binding FacebookUser.LastName, StringFormat='Last Name: {0}'}"
+				   IsVisible="{Binding IsLoggedIn}"/>
+
+			<Label Text="{Binding FacebookUser.Email, StringFormat='Email: {0}'}"
 				   IsVisible="{Binding IsLoggedIn}"/>
 		</StackLayout>
 	</ContentPage.Content>

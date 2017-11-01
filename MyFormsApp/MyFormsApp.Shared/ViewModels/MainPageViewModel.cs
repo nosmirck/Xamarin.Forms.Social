@@ -95,6 +95,7 @@ namespace MyFormsApp.ViewModels
 			else
 			{
 				Debug.WriteLine("Error: " + exception.Message);
+				App.Current.MainPage.DisplayAlert("Error", exception.Message, "OK");
 			}
 		}
 	}
