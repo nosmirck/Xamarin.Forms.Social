@@ -4,13 +4,13 @@ Attempt to create a cross platform plugin for Xamarin Forms using the native SDK
 The idea is that it uses the minimum for anyone using Forms and adapt as needed.
 
 - Facebook:
-Login works on both platforms.
-TODO: delegate facebook's calls as much as possible to the shared project, add sharing and other custom Graph calls.
+  - Login works on both platforms.
+  - TODO: delegate facebook's calls as much as possible to the shared project, add sharing and other custom Graph calls.
 
 - Google:
-TODO: everything
+  - TODO: everything
 
 - Twitter:
-TODO: everything
+  - TODO: everything
 
 This document will be updated periodically as new features are added.
